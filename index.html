@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1v1 Rock-Paper-Scissors</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>1v1 Rock-Paper-Scissors</h1>
+        
+        <div id="game-setup">
+            <input type="text" id="room-code" placeholder="Enter or generate room code">
+            <button id="generate-code">Generate Code</button>
+            <button id="join-game">Join Game</button>
+        </div>
+
+        <div id="game-area" style="display: none;">
+            <h2>Select Your Move</h2>
+            <button class="game-btn" data-choice="rock">Rock</button>
+            <button class="game-btn" data-choice="paper">Paper</button>
+            <button class="game-btn" data-choice="scissors">Scissors</button>
+            <p id="result"></p>
+        </div>
+    </div>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js"></script>
+    <script type="module" src="script.js"></script>
+</body>
+</html>
