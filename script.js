@@ -1,4 +1,8 @@
-// Firebase configuration
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getDatabase, ref, set, onValue } from "firebase/database";
+
+// Your web app's Firebase configuration
 const firebaseConfig = {
     apiKey: "AIzaSyCUox0PRo5cdcG5lY8S-C9zUBVXJv5J-Zk",
     authDomain: "v1game-52766.firebaseapp.com",
@@ -10,8 +14,8 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-const db = firebase.database();
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
 
 // Global variables
 let roomCode = '';
@@ -36,7 +40,7 @@ function startGame() {
     document.getElementById("game-area").style.display = "block";
     
     // Listen for opponent's move
-    db.ref(`games/${roomCode}/${playerRole === 'player1' ? 'player2Move' : 'player1Move'}`).on('value', snapshot => {
+    onValue(ref(db, `games/${roomCode}/${playerRole === 'player1' ? 'player2Move' : 'player1Move'}`), (snapshot) => {
         const opponentMove = snapshot.val();
         if (opponentMove) {
             checkResult(opponentMove);
@@ -46,8 +50,8 @@ function startGame() {
 
 // Play the game
 function playGame(playerChoice) {
-    const playerMoveRef = db.ref(`games/${roomCode}/${playerRole}Move`);
-    playerMoveRef.set(playerChoice);
+    const playerMoveRef = ref(db, `games/${roomCode}/${playerRole}Move`);
+    set(playerMoveRef, playerChoice);
     document.getElementById("result").innerText = "Waiting for opponent's move...";
 }
 
