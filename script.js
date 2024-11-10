@@ -1,8 +1,8 @@
-        // Import the functions you need from the SDKs you need
+        // Import the functions you need from the SDKs
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
         import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
 
-        // Your web app's Firebase configuration
+        //Firebase configuration dont read the apis
         const firebaseConfig = {
             apiKey: "AIzaSyCUox0PRo5cdcG5lY8S-C9zUBVXJv5J-Zk",
             authDomain: "v1game-52766.firebaseapp.com",
